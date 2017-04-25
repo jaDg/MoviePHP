@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Bootstrap Core JavaScript -->
+   
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- plugins -->
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.theme.green.min.css">
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-inverse" role="navigation" id="nav">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand">
+      Cinema Rocha
+      </div>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "Registrarse", new_usuario_path %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Search Movie : <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Titulo o Descripción</a></li>
+            <li><a href="#">Lugar de Origen</a></li>
+            <li><a href="#">Titulo o Descripción y Lugar de Origen</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+              <input type="text" name="Busqueda" value=""><br>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><p class="navbar-text">¿Ya Tienes una Cuenta?</p></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Iniciar Sección</b> <span class="caret"></span></a>
+            <ul id="login-dp" class="dropdown-menu">
+                <li>
+                     <div class="row">
+                            <div class="col-md-12">
+                                
+<!--                                <div class="social-buttons">
+                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                </div>-->
+            
+             <!--                     <%= form_tag '/sessions' do %>
+                  <%= label_tag :email, 'Email' %><br />
+                  <%= email_field_tag :email, "", class: "form-control", placeholder: "Ingrese el mail", required: 'true' %><br>
+                  <%= label_tag :password, 'Password' %><br />
+                  <%= password_field_tag :password, "", class: "form-control", placeholder: "Ingrese el password", required: 'true' %><br>
+                     <br><br>
+                  <%= submit_tag "Conectarse", class: "btn btn-primary btn-block" %>
+                  <% end %>
+                    
+<!--                                        <div class="checkbox">
+                                             <label>
+                                             <input type="checkbox"> keep me logged-in
+                                             </label>
+                                        </div>-->
+
+                            </div>
+                            <div class="bottom text-center">
+                                ¿No tienes usuario ? <a href="#"><b>Unete!</b></a>
+                            </div>
+                     </div>
+                </li>
+            </ul>
+        </li>
+      </ul>
+  <!--  <!--  <% else %>
+      <%  if session[:usuario_id] != nil %>
+       <% usuario = Usuario.find(session[:usuario_id]) %> 
+             <ul class="nav navbar-nav navbar-right">
+        <li><p class="navbar-text">Usuario:</p></li>
+        <li class="dropdown">
+               <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= Usuario.find(session[:usuario_id]).nombre %> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+
+            <li><%= link_to "Cerrar Sesion", '/sessions/'+Usuario.find(session[:usuario_id]).id.to_s, method: :delete %></li>
+          </ul>
+        </li>
+
+      <% end %>
+      <% end %>
+-->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Shop Name</p>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+
+                <div id="sliderhome" class="owl-carousel owl-theme">
+                    <div class="item pelicula">
+                        <a href="#" title="Titulo de la peli" class="pelink">
+                            <figure>
+                                <img class="img-responsive" src="img/peliculas/1.jpg">
+                                <figcaption>
+                                    <div class="caption_content">
+                                        <h3 class="movie_title">
+                                            Lorem ipsum dolor sit
+                                        </h3>
+                                        <p>hola</p>
+                                        <a href=""> caca</a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+
+                    
+                </div>
+
+                <!--<div class="row carousel-holder">
+
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>-->
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-6 col-md-12">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">2014</h4>
+                                <h4><a href="#">Naruto Shippuden - The Road To Ninja</a>
+                                <p></p>
+                                <p class="text-muted">Anime</p>
+                                </h4>
+                                <p>El muchacho se le re pudre el rancho.... Le cae obito y se la pone con el tsukoyomi infinito. Asi, naruto se encuentra en otra realidad en la cual todo cambia a su inversa. Que le deparara? Y seguro sale porque es naruto sino no tendria sentid la serie. Jeje</p>
+                            </div>
+                            <div class="ratings">
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div> 
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div> 
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div> 
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- plugins -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        $('#sliderhome').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:false,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:1
+                },
+                1000:{
+                    items:3
+                },
+                autoplay:true,
+                autoplayTimeout:1000,
+                autoplayHoverPause:true
+            }
+        });
+
+        var $nav = $('#nav');
+        $(window).scroll(function(){
+            var scroll = $(window).scrollTop();
+            console.log(scroll);
+            if (scroll > 100) {
+                $nav.addClass('navbar-fixed-top');
+            }else{
+                $nav.removeClass('navbar-fixed-top');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+#nav.fixed{
+	position: fixed;
+	top:0;
+	left: 0;
+}
+/* pelicula */
+.pelicula *{
+	-webkit-transition: all 250ms ease-in-out;
+	-moz-transition: all 250ms ease-in-out;
+	-o-transition: all 250ms ease-in-out;
+	-ms-transition: all 250ms ease-in-out;
+	transition: all 250ms ease-in-out;
+}
+.pelicula figure{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.pelicula figure img{
+	max-height: 410px;
+	width: auto;
+}
+.pelicula figure figcaption{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background-color: rgba(0,0,0,.7);
+}
+.pelicula a.pelink{
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.pelicula figure figcaption .caption_content{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	left: 10%;
+	right: 10%;
+	color: #fff;
+
+}
+.pelicula figure figcaption .caption_content *{
+	color: #fff
+}
+.pelicula:hover figure figcaption, .pelicula:focus figure figcaption{
+	opacity: 1;
+}
