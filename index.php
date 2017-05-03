@@ -106,10 +106,8 @@
 
                 </div>-->
                 <?php 
-                    $result = mysqli_query($connect,"SELECT * FROM peliculas;");
+                    $result = mysqli_query($connect,"SELECT p.nombre, p.sinopsis, p.anio, g.genero, p.contenidoimagen, p.tipoimagen FROM peliculas p INNER JOIN generos g ON (p.generos_id = g.id);");
                     while($catalogo = mysqli_fetch_array($result)){
-                        $resultgenre = mysqli_query($connect,"SELECT * FROM generos WHERE id =" . $catalogo["generos_id"]);
-                        $genre = mysqli_fetch_array($resultgenre);
                         $image_data = $catalogo["contenidoimagen"];
                         $encoded_image = base64_encode($image_data);
                         //You dont need to decode it again.
@@ -130,7 +128,7 @@
                                 <h4 class="pull-right"> <?php echo $catalogo["anio"]; ?> </h4>
                                 <h4><a href="#"><?php echo $catalogo["nombre"]; ?></a>
                                 <p></p>
-                                <p class="text-muted"> <?php echo $genre["genero"]; ?>  </p>
+                                <p class="text-muted"> <?php echo $catalogo["genero"]; ?>  </p>
                                 </h4>
                                 <p> <?php echo $catalogo["sinopsis"]; ?> </p>
                             </div>
