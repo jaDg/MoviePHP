@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
     <!-- Bootstrap Core JavaScript -->
    
     
@@ -29,101 +30,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+        <?php 
+        include "connection.php";
+        include "defaultnavbar.php";
+        ?>
 </head>
 <body>
 
-    <!-- Navigation -->
-<nav class="navbar navbar-inverse" role="navigation" id="nav">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="navbar-brand">
-      Cinema Rocha
-      </div>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "Registrarse", new_usuario_path %></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Search Movie : <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Titulo o Descripción</a></li>
-            <li><a href="#">Lugar de Origen</a></li>
-            <li><a href="#">Titulo o Descripción y Lugar de Origen</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-              <input type="text" name="Busqueda" value=""><br>
-        </div>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><p class="navbar-text">¿Ya Tienes una Cuenta?</p></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Iniciar Sección</b> <span class="caret"></span></a>
-            <ul id="login-dp" class="dropdown-menu">
-                <li>
-                     <div class="row">
-                            <div class="col-md-12">
-                                
-<!--                                <div class="social-buttons">
-                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-                                </div>-->
-            
-             <!--                     <%= form_tag '/sessions' do %>
-                  <%= label_tag :email, 'Email' %><br />
-                  <%= email_field_tag :email, "", class: "form-control", placeholder: "Ingrese el mail", required: 'true' %><br>
-                  <%= label_tag :password, 'Password' %><br />
-                  <%= password_field_tag :password, "", class: "form-control", placeholder: "Ingrese el password", required: 'true' %><br>
-                     <br><br>
-                  <%= submit_tag "Conectarse", class: "btn btn-primary btn-block" %>
-                  <% end %>
-                    
-<!--                                        <div class="checkbox">
-                                             <label>
-                                             <input type="checkbox"> keep me logged-in
-                                             </label>
-                                        </div>-->
-
-                            </div>
-                            <div class="bottom text-center">
-                                ¿No tienes usuario ? <a href="#"><b>Unete!</b></a>
-                            </div>
-                     </div>
-                </li>
-            </ul>
-        </li>
-      </ul>
-  <!--  <!--  <% else %>
-      <%  if session[:usuario_id] != nil %>
-       <% usuario = Usuario.find(session[:usuario_id]) %> 
-             <ul class="nav navbar-nav navbar-right">
-        <li><p class="navbar-text">Usuario:</p></li>
-        <li class="dropdown">
-               <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= Usuario.find(session[:usuario_id]).nombre %> <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-
-            <li><%= link_to "Cerrar Sesion", '/sessions/'+Usuario.find(session[:usuario_id]).id.to_s, method: :delete %></li>
-          </ul>
-        </li>
-
-      <% end %>
-      <% end %>
--->
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
 
     <!-- Page Content -->
     <div class="container">
@@ -192,19 +105,34 @@
                     </div>
 
                 </div>-->
+                <?php 
+                    $result = mysqli_query($connect,"SELECT * FROM peliculas;");
+                    while($catalogo = mysqli_fetch_array($result)){
+                        $resultgenre = mysqli_query($connect,"SELECT * FROM generos WHERE id =" . $catalogo["generos_id"]);
+                        $genre = mysqli_fetch_array($resultgenre);
+                        $image_data = $catalogo["contenidoimagen"];
+                        $encoded_image = base64_encode($image_data);
+                        //You dont need to decode it again.
+ 
+                        $Hinh = "<img src='data:image/jpeg;base64,{$encoded_image}' alt=\"\">";
+ 
+                        //and you echo $Hinh
 
+
+
+                ?>
                 <div class="row">
 
                     <div class="col-xs-12 col-sm-6 col-md-12">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <img> <?php echo $Hinh; ?> </img>
                             <div class="caption">
-                                <h4 class="pull-right">2014</h4>
-                                <h4><a href="#">Naruto Shippuden - The Road To Ninja</a>
+                                <h4 class="pull-right"> <?php echo $catalogo["anio"]; ?> </h4>
+                                <h4><a href="#"><?php echo $catalogo["nombre"]; ?></a>
                                 <p></p>
-                                <p class="text-muted">Anime</p>
+                                <p class="text-muted"> <?php echo $genre["genero"]; ?>  </p>
                                 </h4>
-                                <p>El muchacho se le re pudre el rancho.... Le cae obito y se la pone con el tsukoyomi infinito. Asi, naruto se encuentra en otra realidad en la cual todo cambia a su inversa. Que le deparara? Y seguro sale porque es naruto sino no tendria sentid la serie. Jeje</p>
+                                <p> <?php echo $catalogo["sinopsis"]; ?> </p>
                             </div>
                             <div class="ratings">
                                 <p>
@@ -217,8 +145,12 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
 
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -235,8 +167,8 @@
                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </div> 
-                    </div>
-                    <div class="row">
+                    </div>-->
+                    <!--<div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -252,8 +184,8 @@
                             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
+                        </div>-->
+                        <!--<div class="col-xs-12 col-sm-6 col-md-4">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -261,8 +193,8 @@
                             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </div> 
-                    </div>
-                </div>
+                    </div>-->
+                
 
             </div>
 
