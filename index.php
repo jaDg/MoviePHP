@@ -111,8 +111,8 @@
                         $image_data = $catalogo["contenidoimagen"];
                         $encoded_image = base64_encode($image_data);
                         //You dont need to decode it again.
- 
-                        $Hinh = "<img src='data:image/jpeg;base64,{$encoded_image}' alt=\"\">";
+
+                        $Hinh = "<img src='data:image/" . $catalogo['tipoimagen'] . ";base64,{$encoded_image}' alt=\"\">";
  
                         //and you echo $Hinh
 
